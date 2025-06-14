@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burger Shot Menu</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="menu-container" class="hidden" >
+        <div class="menu-panel" >
+            <div class="menu-header">
+                <div class="header-content">
+                    <i class="fas fa-hamburger header-icon"></i>
+                    <h1>BURGER SHOT</h1>
+                    <div class="header-subtitle">Premium Fast Food</div>
+                </div>
+                <div class="header-actions">
+                    <button class="confirm-order-btn" onclick="confirmOrder()" id="confirm-order-btn" disabled>
+                        <i class="fas fa-check"></i>
+                        Confirm Order
+                    </button>
+                    <button class="cart-btn" onclick="toggleCart()">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-count">0</span>
+                    </button>
+                    <button class="close-btn" onclick="closeMenu()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="menu-content">
+                <div class="menu-grid">
+                    <div class="menu-item" data-item="burger" data-price="15">
+                        <div class="item-image">
+                            <img src="nui://qb-inventory/html/images/burger.png" alt="Regular Burger" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <i class="fas fa-hamburger" style="display: none;"></i>
+                        </div>
+                        <div class="item-info">
+                            <h3>Regular Burger</h3>
+                            <p>A delicious regular burger</p>
+                            <div class="item-price">$15</div>
+                        </div>
+                        <div class="item-actions">
+                            <button class="add-to-cart-btn" onclick="addToCart('burger', 15, 'Regular Burger')">
+                                <i class="fas fa-plus"></i>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-item="burger_deluxe" data-price="25">
+                        <div class="item-image">
+                            <img src="nui://qb-inventory/html/images/burger_deluxe.png" alt="Deluxe Burger" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <i class="fas fa-hamburger" style="display: none;"></i>
+                        </div>
+                        <div class="item-info">
+                            <h3>Deluxe Burger</h3>
+                            <p>A delicious deluxe burger with bacon</p>
+                            <div class="item-price">$25</div>
+                        </div>
+                        <div class="item-actions">
+                            <button class="add-to-cart-btn" onclick="addToCart('burger_deluxe', 25, 'Deluxe Burger')">
+                                <i class="fas fa-plus"></i>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-item="burger_veggie" data-price="18">
+                        <div class="item-image">
+                            <img src="nui://qb-inventory/html/images/burger_veggie.png" alt="Veggie Burger" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <i class="fas fa-leaf" style="display: none;"></i>
+                        </div>
+                        <div class="item-info">
+                            <h3>Veggie Burger</h3>
+                            <p>A delicious vegetarian burger</p>
+                            <div class="item-price">$18</div>
+                        </div>
+                        <div class="item-actions">
+                            <button class="add-to-cart-btn" onclick="addToCart('burger_veggie', 18, 'Veggie Burger')">
+                                <i class="fas fa-plus"></i>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-item="burger_soda" data-price="8">
+                        <div class="item-image">
+                            <img src="nui://qb-inventory/html/images/burger_soda.png" alt="Soda" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <i class="fas fa-glass-whiskey" style="display: none;"></i>
+                        </div>
+                        <div class="item-info">
+                            <h3>Soda</h3>
+                            <p>A refreshing soda</p>
+                            <div class="item-price">$8</div>
+                        </div>
+                        <div class="item-actions">
+                            <button class="add-to-cart-btn" onclick="addToCart('burger_soda', 8, 'Soda')">
+                                <i class="fas fa-plus"></i>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-item="burger_milkshake" data-price="12">
+                        <div class="item-image">
+                            <img src="nui://qb-inventory/html/images/burger_milkshake.png" alt="Milkshake" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <i class="fas fa-ice-cream" style="display: none;"></i>
+                        </div>
+                        <div class="item-info">
+                            <h3>Milkshake</h3>
+                            <p>A delicious milkshake</p>
+                            <div class="item-price">$12</div>
+                        </div>
+                        <div class="item-actions">
+                            <button class="add-to-cart-btn" onclick="addToCart('burger_milkshake', 12, 'Milkshake')">
+                                <i class="fas fa-plus"></i>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-item="burger_fries" data-price="10">
+                        <div class="item-image">
+                            <img src="nui://qb-inventory/html/images/burger_fries.png" alt="French Fries" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <i class="fas fa-french-fries" style="display: none;"></i>
+                        </div>
+                        <div class="item-info">
+                            <h3>French Fries</h3>
+                            <p>Crispy french fries</p>
+                            <div class="item-price">$10</div>
+                        </div>
+                        <div class="item-actions">
+                            <button class="add-to-cart-btn" onclick="addToCart('burger_fries', 10, 'French Fries')">
+                                <i class="fas fa-plus"></i>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Shopping Cart Panel -->
+            <div id="cart-panel" class="cart-panel hidden">
+                <div class="cart-header">
+                    <h3><i class="fas fa-shopping-cart"></i> Your Order</h3>
+                    <button class="cart-close-btn" onclick="toggleCart()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="cart-content">
+                    <div id="cart-items"></div>
+                    <div class="cart-empty" id="cart-empty">
+                        <i class="fas fa-shopping-cart"></i>
+                        <p>Your cart is empty</p>
+                    </div>
+                </div>
+                <div class="cart-footer">
+                    <div class="cart-total">
+                        <strong>Total: $<span id="cart-total">0</span></strong>
+                    </div>
+                    <div class="cart-actions">
+                        <button class="clear-cart-btn" onclick="clearCart()">
+                            <i class="fas fa-trash"></i>
+                            Clear Cart
+                        </button>
+                        <button class="place-order-btn" onclick="placeOrder()">
+                            <i class="fas fa-paper-plane"></i>
+                            Place Order
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Staff Panel -->
+    <div id="staff-container" class="hidden">
+        <div class="menu-panel">
+            <div class="menu-header">
+                <div class="header-content">
+                    <i class="fas fa-clipboard-list header-icon"></i>
+                    <h1>STAFF PANEL</h1>
+                    <div class="header-subtitle">Order Management</div>
+                </div>
+                <button class="close-btn" onclick="closeStaffPanel()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="menu-content">
+                <div id="orders-container">
+                    <div class="no-orders" id="no-orders">
+                        <i class="fas fa-clipboard-check"></i>
+                        <h3>No Pending Orders</h3>
+                        <p>All orders have been processed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
