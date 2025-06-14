@@ -304,3 +304,33 @@ function GetAcceptedOrdersArray()
     print('GetAcceptedOrdersArray called. Found ' .. #acceptedOrdersArray .. ' accepted orders')
     return acceptedOrdersArray
 end
+
+
+function print_gradient(text, colors)
+    local lines = {}
+    for line in text:gmatch("[^\r\n]+") do
+        table.insert(lines, line)
+    end
+    for i, line in ipairs(lines) do
+        local color = colors[(i - 1) % #colors + 1]
+        print(string.format("\27[38;5;%sm%s\27[0m", color, line))
+    end
+end
+
+purple_gradient = { 135, 134, 133, 132, 90, 54 }
+
+ascii_art = [[
+██╗    ██╗      ██████╗ ███████╗██╗   ██╗     █████╗ ████████╗███╗   ███╗
+██║    ██║      ██╔══██╗██╔════╝██║   ██║    ██╔══██╗╚══██╔══╝████╗ ████║
+██║ █╗ ██║█████╗██║  ██║█████╗  ██║   ██║    ███████║   ██║   ██╔████╔██║
+██║███╗██║╚════╝██║  ██║██╔══╝  ╚██╗ ██╔╝    ██╔══██║   ██║   ██║╚██╔╝██║
+╚███╔███╔╝      ██████╔╝███████╗ ╚████╔╝     ██║  ██║   ██║   ██║ ╚═╝ ██║
+ ╚══╝╚══╝       ╚═════╝ ╚══════╝  ╚═══╝      ╚═╝  ╚═╝   ╚═╝   ╚═╝     ╚═╝
+]]
+
+print_gradient(ascii_art, purple_gradient)
+
+print("\27[38;5;135mCreated by: alphadev\27[0m")
+print("\27[38;5;133mRights: discord.gg/w4dev\27[0m")
+print("\27[38;5;90mW-Dev BurgerShot Server Loaded Successfully!\27[0m")
+print("\27[38;5;60m----------------------------------------\27[0m")
